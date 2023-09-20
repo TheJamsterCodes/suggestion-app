@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Repository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Core", "src\SuggestionApp.Core\SuggestionApp.Core.csproj", "{07E9318F-42A8-4299-A728-2642FA10A923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Application", "src\SuggestionApp.Application\SuggestionApp.Application.csproj", "{60EC8948-6FAE-4999-BEAD-4EF7062BB167}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Infrastructure", "src\SuggestionApp.Infrastructure\SuggestionApp.Infrastructure.csproj", "{4836AB47-753F-45F0-959F-6C50665F6EAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +36,20 @@ Global
 		{07E9318F-42A8-4299-A728-2642FA10A923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E9318F-42A8-4299-A728-2642FA10A923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E9318F-42A8-4299-A728-2642FA10A923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EC8948-6FAE-4999-BEAD-4EF7062BB167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EC8948-6FAE-4999-BEAD-4EF7062BB167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EC8948-6FAE-4999-BEAD-4EF7062BB167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EC8948-6FAE-4999-BEAD-4EF7062BB167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D72F3357-BAB0-49AB-BBF0-41E85C8FA4AC} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
 		{28ACF8F0-746D-4D09-8E66-723CD48A2807} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
 		{07E9318F-42A8-4299-A728-2642FA10A923} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
+		{60EC8948-6FAE-4999-BEAD-4EF7062BB167} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
+		{4836AB47-753F-45F0-959F-6C50665F6EAE} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
 	EndGlobalSection
 EndGlobal
