@@ -1,6 +1,24 @@
 namespace SuggestionApp.Core.Models;
 
-public class Suggestion 
+/// <summary>
+/// <c>Suggestion</c> model
+/// </summary>
+public class Suggestion
 {
-    public string? Title { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+
+    public string AdminNotes { get; set; }
+    public List<BasicUser> Author { get; set; }
+    public Category Category { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    public DateTime DateUpdated { get; set; }
+    public string Description { get; set; }
+    public bool IsApprovedForRelease { get; set; } = false;
+    public bool IsArchived { get; set; } = false;
+    public bool IsRejected { get; set; } = false;
+    public Status Status { get; set; }
+    public string Title { get; set; } 
+    public HashSet<string> Votes { get; set; } = new();
 }
