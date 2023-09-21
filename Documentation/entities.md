@@ -26,8 +26,16 @@
 - CreatedBy
 - Votes
 - Notes
-- IsApproved *(boolean)*
+- IsApprovedForRelease *(boolean)*
     - NOTE: See Status
+- IsArchived
+    - When a suggestion is archived or not. Rejected suggestions can be archived.
+- IsRejected
+    - When a suggestion is eventually rejected regardless or status or even if it was approved for release.
+
+### BasicSuggestion *(value object)*
+- Id
+- Title
 
 ### User
 - ObjectId *(from Azure Active Diretory B2C)*
@@ -36,5 +44,9 @@
 - LastName
 - DisplayName
 - Email
-- AuthoredSuggestions
-- VotedOnSuggestions
+- AuthoredSuggestions *(BasicSuggestion value object)*
+- VotedOnSuggestions *(BasicSuggestion value object)*
+
+### BasicUser *(value object)*
+- Id
+- DisplayName

@@ -1,4 +1,4 @@
-# suggestion-app
+# Suggestly
 
 An app that could possibly be used for content suggestions.
 
@@ -10,8 +10,9 @@ An app that could possibly be used for content suggestions.
 ### Infrastructure
     - Azure Active Directory B2C
 ### Repository
-    - Mondo DB driver
-    - repo classes
+Mondo DB driver
+Repo classes
 ### UI
-    - Blazor server
-    - The ServiceRegistration class provides an extension method for WebApplicationBuilder and configures dependency injection. Add additional dependencies in the method block.
+#### Blazor server
+#### ServiceRegistration class
+The ServiceRegistration class provides an extension method for WebApplicationBuilder and configures dependency injection. Add additional dependencies in the method block.
