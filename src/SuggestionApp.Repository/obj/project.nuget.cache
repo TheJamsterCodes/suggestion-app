@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Z9Z29mWFEgFnpVvKY7pbvrVQQbac5k/dK29pJ/1ACXAUuSjlKgOOwDz7H3MkWwkE6nP6pawHG3aN865xCqLz7w==",
+  "dgSpecHash": "3KuJ8HeQl0Plpog/LWGlMfJK5BuDUPVHrC6TdkgbCUWM4eVPT69SPswl+Sbr2vzJD3YPZaGzMo6MnYJdX9oCmg==",
   "success": true,
   "projectFilePath": "/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/SuggestionApp.Repository.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/Jalanis/.nuget/packages/mongodb.bson/2.21.0/mongodb.bson.2.21.0.nupkg.sha512",
+    "/Users/Jalanis/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/Users/Jalanis/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -6,6 +6,7 @@
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/SuggestionApp.UI.runtimeconfig.json
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/SuggestionApp.UI.dll
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/SuggestionApp.UI.pdb
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/MongoDB.Bson.dll
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/SuggestionApp.Core.dll
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/bin/Debug/net7.0/SuggestionApp.Core.pdb
 /Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.UI/obj/Debug/net7.0/SuggestionApp.UI.csproj.AssemblyReference.cache
