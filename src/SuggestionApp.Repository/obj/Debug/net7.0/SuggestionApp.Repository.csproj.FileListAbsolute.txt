@@ -1,0 +1,15 @@
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/bin/Debug/net7.0/SuggestionApp.Repository.deps.json
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/bin/Debug/net7.0/SuggestionApp.Repository.dll
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/bin/Debug/net7.0/SuggestionApp.Repository.pdb
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/bin/Debug/net7.0/SuggestionApp.Core.dll
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/bin/Debug/net7.0/SuggestionApp.Core.pdb
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.csproj.AssemblyReference.cache
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.AssemblyInfoInputs.cache
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.AssemblyInfo.cs
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.csproj.CoreCompileInputs.cache
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.csproj.CopyComplete
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.dll
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/refint/SuggestionApp.Repository.dll
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/SuggestionApp.Repository.pdb
+/Users/Jalanis/Projects/repos/suggestion-app/src/SuggestionApp.Repository/obj/Debug/net7.0/ref/SuggestionApp.Repository.dll

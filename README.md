@@ -14,3 +14,4 @@ An app that could possibly be used for content suggestions.
     - repo classes
 ### UI
     - Blazor server
+    - The ServiceRegistration class provides an extension method for WebApplicationBuilder and configures dependency injection. Add additional dependencies in the method block.

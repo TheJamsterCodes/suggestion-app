@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "SuggestionApp.Repository/1.0.0": {
+        "dependencies": {
+          "SuggestionApp.Core": "1.0.0"
+        },
+        "runtime": {
+          "SuggestionApp.Repository.dll": {}
+        }
+      },
+      "SuggestionApp.Core/1.0.0": {
+        "runtime": {
+          "SuggestionApp.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SuggestionApp.Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SuggestionApp.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
