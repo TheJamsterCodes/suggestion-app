@@ -1,4 +1,4 @@
-namespace SuggestionApp.Core.Models;
+namespace SuggestionApp.Core.Entities;
 
 /// <summary>
 /// <c>User</c> model
@@ -10,9 +10,9 @@ public class User
     public string Id { get; set; }    
 
     /// <summary>
-    /// A list of suggestions that the user has authored.
+    /// A collection of suggestions that the user has authored.
     /// </summary>
-    public List<BasicSuggestion> AuthoredSuggestions { get; set; }
+    public IReadOnlyList<BasicSuggestion> AuthoredSuggestions { get; set; }
 
     /// <summary>
     /// The display name of the user as it appears on the application UI.
@@ -29,7 +29,8 @@ public class User
     public string ObjectIdentifier { get; set; }
 
     /// <summary>
-    /// A list of suggestions that the user voted on.
+    /// A collection of suggestions that the user voted on.
     /// </summary>
-    public List<BasicSuggestion> VotedSuggestions { get; set; }
+    public IReadOnlyList<BasicSuggestion> VotedSuggestions => _votedSuggestions;
+    private readonly List<BasicSuggestion> _votedSuggestions = new();
 }

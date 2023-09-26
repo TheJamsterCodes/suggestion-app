@@ -1,14 +1,14 @@
-namespace SuggestionApp.Core.Models;
+namespace SuggestionApp.Core.Entities;
 
-public sealed class BasicUser
+public sealed class Author
 {
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; }  
     public string DisplayName { get; }
 
-    public BasicUser() { }
+    public Author() { }
 
-    public BasicUser(User user)
+    public Author(User user)
     {
         Id = user.Id;
         DisplayName = user.DisplayName;    

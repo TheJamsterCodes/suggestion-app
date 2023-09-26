@@ -1,4 +1,4 @@
-namespace SuggestionApp.Core.Models;
+namespace SuggestionApp.Core.Entities;
 
 /// <summary>
 /// <c>BasicSuggestion</c> value object

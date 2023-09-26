@@ -1,9 +1,9 @@
-namespace SuggestionApp.Core.Models;
+namespace SuggestionApp.Core.Entities;
 
 /// <summary>
-/// <c>Status</c> model illustrates the status of a <c>Suggestion</c>.
+/// A <c>Category</c> model describes the category of a <c>Suggestion</c>.
 /// </summary>
-public class Status
+public class Category
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
