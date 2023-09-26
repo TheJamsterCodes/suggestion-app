@@ -1,4 +1,4 @@
-namespace SuggestionApp.Core.Models;
+namespace SuggestionApp.Core.Entities;
 
 /// <summary>
 /// <c>Suggestion</c> model
@@ -10,7 +10,7 @@ public class Suggestion
     public string Id { get; set; }
 
     public string AdminNotes { get; set; }
-    public List<BasicUser> Author { get; set; }
+    public List<Author> Author { get; set; }
     public Category Category { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     public DateTime DateUpdated { get; set; }
