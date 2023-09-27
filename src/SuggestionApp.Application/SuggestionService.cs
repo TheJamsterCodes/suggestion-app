@@ -3,7 +3,7 @@ namespace SuggestionApp.Application;
 /// <summary>
 /// A class pertaining to use cases of <c>Suggestion</c>.
 /// </summary>
-public class SuggestionService
+public class SuggestionService : ISuggestionService
 {
     private readonly IBaseRepository<Suggestion> _baseRepo;
     private readonly ISuggestionRepository _suggestRepo;
