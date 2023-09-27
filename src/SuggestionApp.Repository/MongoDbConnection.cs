@@ -7,6 +7,7 @@ public class MongoDbConnection : IDbConnection
     private readonly IMongoDatabase _db;
 
     public IMongoClient Client { get; private set; }
+    public string DatabaseName { get; private set; }
     public IMongoCollection<Category> Categories { get; private set; }
     public IMongoCollection<Suggestion> Suggestions { get; private set; }    
     public IMongoCollection<Status> Statuses { get; private set; }
@@ -17,7 +18,8 @@ public class MongoDbConnection : IDbConnection
         try
         {
             Client = new MongoClient(config.GetConnectionString("MongoDB"));
-            _db = Client.GetDatabase(config["DatabaseName"]);
+            DatabaseName = config["DatabaseName"];
+            _db = Client.GetDatabase(DatabaseName);
 
             Categories = _db.GetCollection<Category>("categories");
             Suggestions = _db.GetCollection<Suggestion>("suggestions");

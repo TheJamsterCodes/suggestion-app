@@ -40,17 +40,18 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
     /// <param name="suggestion"></param>
     public async void CreateWithAuthor(Suggestion suggestion, User user)
     {
-        using var session = await _db.Client.StartSessionAsync();
-        var db = _db.Client.GetDatabase("");
-        var suggestions = db.GetCollection<Suggestion>("suggestions");
-        var users = db.GetCollection<User>("users");
+        using IClientSessionHandle session = await _db.Client.StartSessionAsync();
+
+        IMongoDatabase sessionDb = _db.Client.GetDatabase(_db.DatabaseName);
+        var suggestions = sessionDb.GetCollection<Suggestion>("suggestions");
+        var users = sessionDb.GetCollection<User>("users");
+
         session.StartTransaction();        
 
         try
         {
-            await suggestions.InsertOneAsync(suggestion);
-            user.AuthoredSuggestions.Add(new BasicSuggestion(suggestion));
-            await users.ReplaceOneAsync(u => u.Id == user.Id, user);
+            await suggestions.InsertOneAsync(suggestion);            
+            await users.ReplaceOneAsync(u => u.Id == user.Id, user, _replaceOptions);
 
             await session.CommitTransactionAsync();
         }
