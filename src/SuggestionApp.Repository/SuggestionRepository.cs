@@ -109,39 +109,17 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
 
     public async void UpdateVote(Suggestion suggestion, User user)
     {        
-        using var session = await _db.Client.StartSessionAsync();
-        var db = _db.Client.GetDatabase("");
+        using IClientSessionHandle session = await _db.Client.StartSessionAsync();
+
+        var db = _db.Client.GetDatabase(_db.DatabaseName);
         var suggestions = db.GetCollection<Suggestion>("suggestions");
         var users = db.GetCollection<User>("users");
+
         session.StartTransaction();
 
         try
         {            
-            
-            var updatedSuggestion = (await suggestions.FindAsync(s => s.Id == suggestion.Id)).First();
-
-            bool isUpvote = suggestion.Votes.Add(user.Id);
-
-            if (isUpvote)
-            {
-                _ = suggestion.Votes.Remove(user.Id);
-            }
-
             _ = await suggestions.ReplaceOneAsync(s => s.Id == suggestion.Id, suggestion);
-
-            
-            var updatedUser = (await users.FindAsync(u => u.Id == suggestion.Author.Id)).First();
-
-            if (isUpvote)
-            {
-                user.VotedSuggestions.Add(new BasicSuggestion(suggestion));
-            }
-            else
-            {
-                var removedSuggestion = user.VotedSuggestions.Where(s => s.Id == suggestion.Id).First();
-                user.VotedSuggestions.Remove(removedSuggestion);
-            }
-
             _ = await users.ReplaceOneAsync(u => u.Id == user.Id, user);
 
             await session.CommitTransactionAsync();
