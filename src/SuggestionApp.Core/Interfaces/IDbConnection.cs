@@ -1,4 +1,6 @@
-namespace SuggestionApp.Repository;
+using SuggestionApp.Core.Entities;
+
+namespace SuggestionApp.Core.Interfaces;
 
 public interface IDbConnection
 {
