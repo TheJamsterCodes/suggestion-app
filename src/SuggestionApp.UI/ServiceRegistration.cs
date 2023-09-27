@@ -1,4 +1,4 @@
-using SuggestionApp.Core.Entities;
+using SuggestionApp.Application;
 using SuggestionApp.Core.Interfaces;
 using SuggestionApp.Repository;
 
@@ -19,5 +19,7 @@ public static class ServiceRegistration
         builder.Services.AddSingleton<IBaseRepository<Suggestion>, SuggestionRepository>();
         builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddSingleton<IBaseRepository<User>, UserRepository>();
+
+        builder.Services.AddSingleton<ISuggestionService, SuggestionService>();
     }
 }

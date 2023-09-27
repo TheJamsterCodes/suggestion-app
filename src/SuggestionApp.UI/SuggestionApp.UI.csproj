@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SuggestionApp.Core\SuggestionApp.Core.csproj" />
     <ProjectReference Include="..\SuggestionApp.Repository\SuggestionApp.Repository.csproj" />
+    <ProjectReference Include="..\SuggestionApp.Application\SuggestionApp.Application.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
