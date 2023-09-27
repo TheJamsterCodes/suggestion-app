@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Infrastructure", "src\SuggestionApp.Infrastructure\SuggestionApp.Infrastructure.csproj", "{4836AB47-753F-45F0-959F-6C50665F6EAE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2AA1ADFA-C917-40EA-B0C8-E3FB1B87251A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuggestionApp.Tests", "tests\SuggestionApp.Tests\SuggestionApp.Tests.csproj", "{5129BFE4-38AB-410D-A49C-28E9967DDDDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,10 @@ Global
 		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4836AB47-753F-45F0-959F-6C50665F6EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5129BFE4-38AB-410D-A49C-28E9967DDDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5129BFE4-38AB-410D-A49C-28E9967DDDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5129BFE4-38AB-410D-A49C-28E9967DDDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5129BFE4-38AB-410D-A49C-28E9967DDDDE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D72F3357-BAB0-49AB-BBF0-41E85C8FA4AC} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
@@ -51,5 +59,6 @@ Global
 		{07E9318F-42A8-4299-A728-2642FA10A923} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
 		{60EC8948-6FAE-4999-BEAD-4EF7062BB167} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
 		{4836AB47-753F-45F0-959F-6C50665F6EAE} = {68A7ADE9-2B48-489F-9E3D-45F0BDF82449}
+		{5129BFE4-38AB-410D-A49C-28E9967DDDDE} = {2AA1ADFA-C917-40EA-B0C8-E3FB1B87251A}
 	EndGlobalSection
 EndGlobal
