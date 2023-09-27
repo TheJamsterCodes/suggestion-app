@@ -2,7 +2,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace SuggestionApp.Repository;
 
-public class UserRepository : IRepository<User>
+public class UserRepository : IBaseRepository<User>
 {
     private readonly IMemoryCache _cache;
     private readonly string _cacheName = "UserData";

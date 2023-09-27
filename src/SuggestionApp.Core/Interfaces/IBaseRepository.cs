@@ -1,6 +1,6 @@
 namespace SuggestionApp.Core.Interfaces;
 
-public interface IRepository<IEntity> 
+public interface IBaseRepository<IEntity> 
 {
     void Create(IEntity entity);
     void CreateMany(IList<IEntity> entities);
