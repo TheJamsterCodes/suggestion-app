@@ -3,13 +3,14 @@ namespace SuggestionApp.Tests.Application;
 [TestFixture]
 public class SuggestionServiceTests
 {
+    private readonly IBaseRepository<Suggestion> _mockBaseRepo = Substitute.For<IBaseRepository<Suggestion>>();
     private readonly ISuggestionRepository _mockSuggestRepo = Substitute.For<ISuggestionRepository>();
     private SuggestionService _suggestion;
 
     [SetUp]
     public void Setup()
     {
-        _suggestion = new(_mockSuggestRepo);
+        _suggestion = new(_mockBaseRepo, _mockSuggestRepo);
     }
 
     [Test]

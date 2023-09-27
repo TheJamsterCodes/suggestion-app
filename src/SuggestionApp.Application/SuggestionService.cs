@@ -1,16 +1,21 @@
 namespace SuggestionApp.Application;
 
 /// <summary>
-/// A class pertaining to use cases of suggestions.
+/// A class pertaining to use cases of <c>Suggestion</c>.
 /// </summary>
 public class SuggestionService
 {
+    private readonly IBaseRepository<Suggestion> _baseRepo;
     private readonly ISuggestionRepository _suggestRepo;
 
-    public SuggestionService(ISuggestionRepository suggestRepo) => _suggestRepo = suggestRepo;
+    public SuggestionService(IBaseRepository<Suggestion> baseRepo, ISuggestionRepository suggestRepo)
+    {
+        _baseRepo = baseRepo;
+        _suggestRepo = suggestRepo;
+    }
 
     /// <summary>
-    /// Adds a BasicSuggestion to the User.AuthoredSuggestions list
+    /// Adds a <c>BasicSuggestion</c> to the <c>User.AuthoredSuggestions</c> list
     /// and persists both entities to the database.
     /// </summary>
     /// <param name="suggestion"></param>
@@ -23,13 +28,36 @@ public class SuggestionService
     }
 
     /// <summary>
-    /// Add/remove the voter's User.Id from Suggestion.Votes,
-    /// add/remove BasicSuggestion from User,
+    /// Gets a list of <c>Suggestion</c> where <c>IsApprovedForRelease == true</c>.
+    /// </summary>
+    /// <returns>An enumerable list of <c>Suggestion</c>.</returns>
+    public async Task<IEnumerable<Suggestion>> GetApprovedForRelease()
+    {
+        var suggestions = await _baseRepo.ReadMany();
+        return suggestions.Where(s => s.IsApprovedForRelease).OrderByDescending(s => s.DateCreated);
+    }
+
+    /// <summary>
+    /// Gets a list of <c>Suggestion</c> where <c>IsApprovedForRelease == false</c>
+    /// and <c>IsRejected == false</c>.
+    /// </summary>
+    /// <returns>An enumerable list of <c>Suggestion</c>.</returns>
+    public async Task<IEnumerable<Suggestion>> GetWaitingForApproval()
+    {
+        var suggestions = await _baseRepo.ReadMany();
+        return suggestions.Where(s => !s.IsApprovedForRelease && !s.IsRejected).OrderBy(s => s.DateCreated);
+    }    
+
+
+    /// <summary>
+    /// Add/remove the voter's <c>User.Id</c> from <c>Suggestion.Votes</c>,
+    /// add/remove <c>BasicSuggestion</c> from <c>User</c>,
     /// and persists the both entities to the database.
     /// </summary>
     /// <param name="suggestion"></param>
     /// <param name="user"></param>
-    /// <returns></returns>
+    /// <param name="votingUserId"></param>
+    /// <returns>A <c>bool</c> based on upvote.</returns>
     public bool Vote(Suggestion suggestion, User user, string votingUserId)
     {
         bool isUpvote = suggestion.Votes.Add(votingUserId);
