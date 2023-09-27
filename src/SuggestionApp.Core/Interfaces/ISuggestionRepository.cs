@@ -1,6 +1,6 @@
 using SuggestionApp.Core.Entities;
 
-namespace SuggestionApp.Repository;
+namespace SuggestionApp.Core.Interfaces;
 
 public interface ISuggestionRepository
 {
