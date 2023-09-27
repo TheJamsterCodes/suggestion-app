@@ -109,10 +109,12 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
 
     public async void UpdateVote(Suggestion suggestion, User user)
     {        
-        using var session = await _db.Client.StartSessionAsync();
-        var db = _db.Client.GetDatabase("");
+        using IClientSessionHandle session = await _db.Client.StartSessionAsync();
+
+        var db = _db.Client.GetDatabase(_db.DatabaseName);
         var suggestions = db.GetCollection<Suggestion>("suggestions");
         var users = db.GetCollection<User>("users");
+
         session.StartTransaction();
 
         try
@@ -122,7 +124,7 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
 
             bool isUpvote = suggestion.Votes.Add(user.Id);
 
-            if (isUpvote)
+            if (!isUpvote)
             {
                 _ = suggestion.Votes.Remove(user.Id);
             }

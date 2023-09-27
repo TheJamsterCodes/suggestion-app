@@ -19,6 +19,8 @@ public class Suggestion
     public bool IsArchived { get; set; } = false;
     public bool IsRejected { get; set; } = false;
     public Status Status { get; set; }
-    public string Title { get; set; } 
-    public HashSet<string> Votes { get; set; } = new();
+    public string Title { get; set; }
+
+    public HashSet<string> Votes => _votes;
+    private readonly HashSet<string> _votes = new();
 }
