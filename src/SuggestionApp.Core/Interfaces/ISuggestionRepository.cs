@@ -1,3 +1,5 @@
+using SuggestionApp.Core.Entities;
+
 namespace SuggestionApp.Repository;
 
 public interface ISuggestionRepository
