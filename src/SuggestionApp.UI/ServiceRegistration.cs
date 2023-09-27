@@ -21,5 +21,6 @@ public static class ServiceRegistration
         builder.Services.AddSingleton<IBaseRepository<User>, UserRepository>();
 
         builder.Services.AddSingleton<ISuggestionService, SuggestionService>();
+        builder.Services.AddSingleton<IUserService, UserService>();
     }
 }
