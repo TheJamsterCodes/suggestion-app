@@ -10,7 +10,7 @@ public class Suggestion
     public string Id { get; set; }
 
     public string AdminNotes { get; set; }
-    public List<Author> Author { get; set; }
+    public Author Author { get; set; }
     public Category Category { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     public DateTime DateUpdated { get; set; }

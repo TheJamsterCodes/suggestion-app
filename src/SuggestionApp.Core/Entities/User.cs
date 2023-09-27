@@ -12,7 +12,7 @@ public class User
     /// <summary>
     /// A collection of suggestions that the user has authored.
     /// </summary>
-    public IReadOnlyList<BasicSuggestion> AuthoredSuggestions { get; set; }
+    public IList<BasicSuggestion> AuthoredSuggestions { get; set; }
 
     /// <summary>
     /// The display name of the user as it appears on the application UI.
@@ -31,6 +31,6 @@ public class User
     /// <summary>
     /// A collection of suggestions that the user voted on.
     /// </summary>
-    public IReadOnlyList<BasicSuggestion> VotedSuggestions => _votedSuggestions;
+    public IList<BasicSuggestion> VotedSuggestions => _votedSuggestions;
     private readonly List<BasicSuggestion> _votedSuggestions = new();
 }

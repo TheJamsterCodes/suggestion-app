@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace SuggestionApp.Repository;
 
-public class CategoryRepository : IRepository<Category>
+public class CategoryRepository : IBaseRepository<Category>
 {
     private readonly IMemoryCache _cache;
     private readonly string _cacheName = "CategoryData";
