@@ -1,5 +1,8 @@
 ﻿namespace SuggestionApp.Application;
 
+/// <summary>
+/// A class pertaining to use cases of <c>User</c>.
+/// </summary>
 public class UserService : IUserService
 {
     private readonly IBaseRepository<User> _userRepo;
