@@ -1,4 +1,5 @@
 using SuggestionApp.Application;
+using SuggestionApp.Core;
 using SuggestionApp.Core.Interfaces;
 using SuggestionApp.Repository;
 
@@ -14,7 +15,8 @@ public static class ServiceRegistration
         builder.Services.AddMemoryCache();
 
         builder.Services.AddSingleton<IDbConnection, MongoDbConnection>();
-        builder.Services.AddSingleton<IBaseRepository<Category>, CategoryRepository>();
+        //builder.Services.AddSingleton<IBaseRepository<Category>, CategoryRepository>();
+        builder.Services.AddSingleton<IBaseRepository<Category>, MockCategoryRepository>();
         builder.Services.AddSingleton<IBaseRepository<Status>, StatusRepository>();
         builder.Services.AddSingleton<IBaseRepository<Suggestion>, SuggestionRepository>();
         builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
