@@ -17,7 +17,8 @@ public static class ServiceRegistration
         builder.Services.AddSingleton<IDbConnection, MongoDbConnection>();
         //builder.Services.AddSingleton<IBaseRepository<Category>, CategoryRepository>();
         builder.Services.AddSingleton<IBaseRepository<Category>, MockCategoryRepository>();
-        builder.Services.AddSingleton<IBaseRepository<Status>, StatusRepository>();
+        //builder.Services.AddSingleton<IBaseRepository<Status>, StatusRepository>();
+        builder.Services.AddSingleton<IBaseRepository<Status>, MockStatusRepository>();
         builder.Services.AddSingleton<IBaseRepository<Suggestion>, SuggestionRepository>();
         builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddSingleton<IBaseRepository<User>, UserRepository>();
