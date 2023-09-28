@@ -29,7 +29,11 @@ public class MockCategoryRepository : IBaseRepository<Category>
 
     public Task<Category> Read(string id) => (Task<Category>)MockCategory.Categories.Where(c => c.Id == id);
 
-    public Task<IEnumerable<Category>> ReadMany() => (Task<IEnumerable<Category>>)MockCategory.Categories;
+    public async Task<IEnumerable<Category>> ReadMany()
+    {
+        var task = Task.FromResult<IEnumerable<Category>>(MockCategory.Categories);
+        return await task;
+    }
 
     public Task<bool> Update(Category entity)
     {

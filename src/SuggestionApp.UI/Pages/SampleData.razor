@@ -1,0 +1,39 @@
+﻿@namespace SuggestionApp.UI.Pages
+
+@page "/SampleData"
+@inject ICategoryService categorySvc
+
+<h3>SampleData</h3>
+
+@if (areCategoriesCreated) {
+    <p>Categories have been created!</p>
+
+    <hr />
+
+    <ul>
+        @foreach (Category category in categories)
+        {
+            <li>@category.Name</li>
+        }
+    </ul>
+
+} else {
+    <button class="btn btn-primary" @onclick="CreateCategories">Create Categories</button>
+}
+
+@code {
+    private bool areCategoriesCreated = false;
+    private IEnumerable<Category> categories;
+    
+    private async Task CreateCategories()
+    {
+        categories = await categorySvc.Get();
+
+        if (!categories.Any())
+        {
+            categorySvc.Create(Core.MockCategory.Categories.ToList());
+        }
+
+        if (categories.Any()) areCategoriesCreated = true;
+    }
+}
