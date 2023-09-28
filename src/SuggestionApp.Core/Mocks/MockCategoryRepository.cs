@@ -27,7 +27,11 @@ public class MockCategoryRepository : IBaseRepository<Category>
         throw new NotImplementedException();
     }
 
-    public Task<Category> Read(string id) => (Task<Category>)MockCategory.Categories.Where(c => c.Id == id);
+    public async Task<Category> Read(string id)
+    {
+        var task = Task.FromResult(MockCategory.Categories.First(c => c.Id == id));
+        return await task;
+    }
 
     public async Task<IEnumerable<Category>> ReadMany()
     {

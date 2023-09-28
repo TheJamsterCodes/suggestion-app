@@ -27,9 +27,17 @@ public class MockStatusRepository : IBaseRepository<Status>
         throw new NotImplementedException();
     }
 
-    public Task<Status> Read(string id) => (Task<Status>)MockStatus.Statuses.Where(s => s.Id == id);
+    public async Task<Status> Read(string id)
+    {
+        var task = Task.FromResult(MockStatus.Statuses.First(s => s.Id == id));
+        return await task;
+    }
 
-    public Task<IEnumerable<Status>> ReadMany() => (Task<IEnumerable<Status>>)MockStatus.Statuses;
+    public async Task<IEnumerable<Status>> ReadMany()
+    {
+        var task = Task.FromResult<IEnumerable<Status>>(MockStatus.Statuses);
+        return await task;
+    }
 
     public Task<bool> Update(Status entity)
     {
