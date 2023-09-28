@@ -1,4 +1,4 @@
-﻿namespace SuggestionApp.Core;
+﻿namespace SuggestionApp.Core.Mocks;
 
 public class MockCategory
 {

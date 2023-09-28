@@ -1,6 +1,4 @@
-﻿using SuggestionApp.Core.Interfaces;
-
-namespace SuggestionApp.Core;
+﻿namespace SuggestionApp.Core.Mocks;
 
 public class MockStatusRepository : IBaseRepository<Status>
 {
