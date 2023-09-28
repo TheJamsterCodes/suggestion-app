@@ -1,6 +1,5 @@
 using SuggestionApp.Application;
 using SuggestionApp.Core;
-using SuggestionApp.Core.Interfaces;
 using SuggestionApp.Repository;
 
 namespace SuggestionApp.UI;
@@ -23,6 +22,8 @@ public static class ServiceRegistration
         builder.Services.AddSingleton<ISuggestionRepository, SuggestionRepository>();
         builder.Services.AddSingleton<IBaseRepository<User>, UserRepository>();
 
+        builder.Services.AddSingleton<ICategoryService, CategoryService>();
+        builder.Services.AddSingleton<IStatusService, StatusService>();
         builder.Services.AddSingleton<ISuggestionService, SuggestionService>();
         builder.Services.AddSingleton<IUserService, UserService>();
     }
