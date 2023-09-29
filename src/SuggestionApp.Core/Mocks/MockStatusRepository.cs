@@ -27,13 +27,13 @@ public class MockStatusRepository : IBaseRepository<Status>
 
     public async Task<Status> Read(string id)
     {
-        var task = Task.FromResult(MockStatus.Statuses.First(s => s.Id == id));
+        var task = Task.FromResult(FakeStatus.Statuses.First(s => s.Id == id));
         return await task;
     }
 
     public async Task<IEnumerable<Status>> ReadMany()
     {
-        var task = Task.FromResult<IEnumerable<Status>>(MockStatus.Statuses);
+        var task = Task.FromResult<IEnumerable<Status>>(FakeStatus.Statuses);
         return await task;
     }
 

@@ -1,6 +1,6 @@
-﻿namespace SuggestionApp.Core.Mocks;
+﻿namespace SuggestionApp.Core.Fakes;
 
-public class MockStatus
+public class FakeStatus
 {
     public readonly static IReadOnlyList<Status> Statuses = new List<Status>
     {        

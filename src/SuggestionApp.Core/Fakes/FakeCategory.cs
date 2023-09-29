@@ -1,6 +1,6 @@
-﻿namespace SuggestionApp.Core.Mocks;
+﻿namespace SuggestionApp.Core.Fakes;
 
-public class MockCategory
+public class FakeCategory
 {
     public readonly static IReadOnlyList<Category> Categories = new List<Category>
     {
