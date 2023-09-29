@@ -21,6 +21,5 @@ public class Suggestion
     public Status Status { get; set; }
     public string Title { get; set; }
 
-    public HashSet<string> Votes => _votes;
-    private readonly HashSet<string> _votes = new();
+    public HashSet<string> Votes { get; } = new();
 }
