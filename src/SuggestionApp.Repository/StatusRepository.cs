@@ -51,7 +51,8 @@ public class StatusRepository : IBaseRepository<Status>
 
         if (output is null)
         {
-            output = (IEnumerable<Status>)await _statuses.FindAsync(_ => true);
+            IAsyncCursor<Status> cursor = await _statuses.FindAsync(_ => true);
+            output = cursor.Current;
             _cache.Set(_cacheName, output, TimeSpan.FromDays(1));
         }
 
