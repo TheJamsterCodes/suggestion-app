@@ -18,7 +18,7 @@ public class MongoDbConnection : IDbConnection
         try
         {
             Client = new MongoClient(config.GetConnectionString("MongoDB"));
-            DatabaseName = config["DatabaseName"];
+            DatabaseName = config.GetSection("DatabaseName").Value;
             _db = Client.GetDatabase(DatabaseName);
 
             Categories = _db.GetCollection<Category>("categories");

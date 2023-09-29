@@ -11,7 +11,6 @@
     <!-- <Nullable>enable</Nullable> -->
     <ImplicitUsings>enable</ImplicitUsings>
     <_EnableMacOSCodeSign>false</_EnableMacOSCodeSign>
-    <UserSecretsId>ca741218-d72d-471a-9a61-0ddf9c36124b</UserSecretsId>
   </PropertyGroup>
 
 </Project>

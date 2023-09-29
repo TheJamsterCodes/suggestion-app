@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using SuggestionApp.UI;
 
 var builder = WebApplication.CreateBuilder(args);

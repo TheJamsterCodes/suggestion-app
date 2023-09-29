@@ -6,7 +6,7 @@ namespace SuggestionApp.Repository;
 public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Suggestion>
 {
     private readonly IMemoryCache _cache;
-    private readonly string _cacheName = "Data";    
+    private readonly string _cacheName = "SuggestionData";    
     private readonly IDbConnection _db;
     private readonly ReplaceOptions _replaceOptions = new() { IsUpsert = true };
     private readonly IMongoCollection<Suggestion> _suggestions;
@@ -123,7 +123,7 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
             _ = await users.ReplaceOneAsync(u => u.Id == user.Id, user);
 
             await session.CommitTransactionAsync();
-            _cache.Remove("SuggestionData");
+            _cache.Remove(_cacheName);
         }
         catch (Exception)
         {
