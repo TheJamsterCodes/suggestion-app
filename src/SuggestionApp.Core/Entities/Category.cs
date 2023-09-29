@@ -3,12 +3,11 @@ namespace SuggestionApp.Core.Entities;
 /// <summary>
 /// A <c>Category</c> model describes the category of a <c>Suggestion</c>.
 /// </summary>
-public class Category
+public class Category : BaseEntity
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
-
+    [BsonElement("description")]
     public string Description { get; set; }
+
+    [BsonElement("name")]
     public string Name { get; set; }
 }

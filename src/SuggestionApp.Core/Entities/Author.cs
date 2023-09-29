@@ -1,9 +1,8 @@
 namespace SuggestionApp.Core.Entities;
 
-public sealed class Author
+public sealed class Author : BaseEntity
 {
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; }  
+    [BsonElement("displayName")]
     public string DisplayName { get; }
 
     public Author() { }
