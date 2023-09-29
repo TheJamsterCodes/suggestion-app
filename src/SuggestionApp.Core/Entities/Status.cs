@@ -3,12 +3,11 @@ namespace SuggestionApp.Core.Entities;
 /// <summary>
 /// <c>Status</c> model illustrates the status of a <c>Suggestion</c>.
 /// </summary>
-public class Status
+public class Status : BaseEntity
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
-
+    [BsonElement("description")]
     public string Description { get; set; }
+
+    [BsonElement("name")]
     public string Name { get; set; }
 }

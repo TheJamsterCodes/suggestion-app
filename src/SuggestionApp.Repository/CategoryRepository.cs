@@ -44,15 +44,23 @@ public class CategoryRepository : IBaseRepository<Category>
 
     public async Task<IEnumerable<Category>> ReadMany()
     {
-        var output = _cache.Get<IEnumerable<Category>>(_cacheName);
-
-        if (output is null)
+        try
         {
-            output = (IEnumerable<Category>)await _categories.FindAsync(_ => true);
-            _cache.Set(_cacheName, output, TimeSpan.FromDays(1));
-        }
+            var output = _cache.Get<IEnumerable<Category>>(_cacheName);
 
-        return output;
+            if (output is null)
+            {
+                IAsyncCursor<Category> cursor = await _categories.FindAsync(_ => true);
+                output = cursor.Current;
+                _cache.Set(_cacheName, output, TimeSpan.FromDays(1));
+            }
+
+            return output;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     public async Task<bool> Update(Category category)

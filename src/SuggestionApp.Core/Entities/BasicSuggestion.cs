@@ -3,10 +3,9 @@ namespace SuggestionApp.Core.Entities;
 /// <summary>
 /// <c>BasicSuggestion</c> value object
 /// </summary>
-public sealed class BasicSuggestion
+public sealed class BasicSuggestion : BaseEntity
 {
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; }
+    [BsonElement("title")]
     public string Title { get; }
 
     public BasicSuggestion() { }

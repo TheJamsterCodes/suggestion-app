@@ -8,11 +8,8 @@
 
 <hr />
 
-@if (areCategoriesCreated) {
+@if (areCategoriesCreated && !(categories is null)) {
     <h4>Categories have been created!</h4>
-
-    <hr />
-
     <dl>
         @foreach (Category category in categories)
         {
@@ -20,16 +17,14 @@
             <dd>@category.Description</dd>
         }
     </dl>
-
 } else {
     <button class="btn btn-primary" @onclick="CreateCategories">Create Categories</button>
 }
 
 <hr />
 
-@if (areStatusesCreated) {
+@if (areStatusesCreated && !(statuses is null)) {
     <h4>Statuses have been created!</h4>
-
     <dl>
         @foreach (Status status in statuses)
         {
@@ -37,7 +32,6 @@
             <dd>@status.Description</dd>
         }
     </dl>
-
 } else {
     <button class="btn btn-primary" @onclick="CreateStatuses">Create Statuses</button>
 }
@@ -46,30 +40,27 @@
     private bool areCategoriesCreated = false;
     private bool areStatusesCreated = false;
 
-    private IEnumerable<Category> categories;
-    private IEnumerable<Status> statuses;
+    private IEnumerable<Category> categories = null;
+    private IEnumerable<Status> statuses = null;
     
     private async Task CreateCategories()
     {
         categories = await categorySvc.Get();
 
-        if (!categories.Any())
+        if (categories is null)
         {
-            categorySvc.Create(MockCategory.Categories.ToList());
+            categorySvc.Create(FakeCategory.Categories.ToList());
+            areCategoriesCreated = true;
         }
-
-        if (categories.Any()) areCategoriesCreated = true;
     }
-
     private async Task CreateStatuses()
     {
         statuses = await statusSvc.Get();
 
-        if (!statuses.Any())
+        if (statuses is null)
         {
-            statusSvc.Create(MockStatus.Statuses.ToList());
+            statusSvc.Create(FakeStatus.Statuses.ToList());
+            areStatusesCreated = true;
         }
-
-        if (statuses.Any()) areStatusesCreated = true;
     }    
 }

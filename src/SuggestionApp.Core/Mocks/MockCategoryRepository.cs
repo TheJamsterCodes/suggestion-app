@@ -1,6 +1,4 @@
-﻿using SuggestionApp.Core.Interfaces;
-
-namespace SuggestionApp.Core.Mocks;
+﻿namespace SuggestionApp.Core.Mocks;
 
 public class MockCategoryRepository : IBaseRepository<Category>
 {
@@ -29,13 +27,13 @@ public class MockCategoryRepository : IBaseRepository<Category>
 
     public async Task<Category> Read(string id)
     {
-        var task = Task.FromResult(MockCategory.Categories.First(c => c.Id == id));
+        var task = Task.FromResult(FakeCategory.Categories.First(c => c.Id == id));
         return await task;
     }
 
     public async Task<IEnumerable<Category>> ReadMany()
     {
-        var task = Task.FromResult<IEnumerable<Category>>(MockCategory.Categories);
+        var task = Task.FromResult<IEnumerable<Category>>(FakeCategory.Categories);
         return await task;
     }
 
