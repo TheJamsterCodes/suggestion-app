@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Rewrite;
+
 using SuggestionApp.UI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,20 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Authentication and Authorization with redirects
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseRewriter(new RewriteOptions().Add(contextRule =>
+    { 
+        if (contextRule.HttpContext.Request.Path == "MicrosoftIdentity/Account/SignedOut")
+        {
+            contextRule.HttpContext.Response.Redirect("/");
+        }
+    }
+));
+
+// Mappings
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+
 using SuggestionApp.Application;
 using SuggestionApp.Repository;
 
@@ -9,8 +13,14 @@ public static class ServiceRegistration
     {                
         // Add services to the container.
         builder.Services.AddRazorPages();
-        builder.Services.AddServerSideBlazor();
+        builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
         builder.Services.AddMemoryCache();
+        builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
+
+        builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+                        .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+
+        builder.Services.AddAuthorization(c => c.AddPolicy("Admin", cp => cp.RequireClaim("jobTitle", "Admin")));
 
         builder.Services.AddSingleton<IDbConnection, MongoDbConnection>();
         builder.Services.AddSingleton<IBaseRepository<Category>, CategoryRepository>();
