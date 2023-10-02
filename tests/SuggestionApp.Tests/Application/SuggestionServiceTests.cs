@@ -14,7 +14,7 @@ public class SuggestionServiceTests
     }
 
     [Test]
-    public void AuthoredSuggestion_UserHasABasicSuggestion()
+    public async Task AuthoredSuggestion_UserHasABasicSuggestion()
     {
         var user = new User { Id = "12345", DisplayName = "elJamster" };
 
@@ -27,14 +27,14 @@ public class SuggestionServiceTests
 
         var actual = new BasicSuggestion(suggestion);
 
-        _suggestion.AuthorSuggestion(suggestion, user);
+        await _suggestion.AuthorSuggestion(suggestion, user);
 
         Assert.That(user.AuthoredSuggestions.Any(s => s.Id == actual.Id));
-        _mockSuggestRepo.Received().CreateWithAuthor(Arg.Is(suggestion), Arg.Is(user));
+        await _mockSuggestRepo.Received().CreateWithAuthor(Arg.Is(suggestion), Arg.Is(user));
     }
 
     [Test]
-    public void Vote_IsUpvote_True()
+    public async Task Vote_IsUpvote_True()
     {
         bool expected = true;
         var user = new User { Id = "12345", DisplayName = "elJamster" };
@@ -48,14 +48,14 @@ public class SuggestionServiceTests
         
         string votingUserId = "B123456"; 
 
-        bool actual = _suggestion.Vote(suggestion, user, votingUserId);
+        bool actual = await _suggestion.Vote(suggestion, user, votingUserId);
 
         Assert.That(actual, Is.EqualTo(expected));
-        _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));      
+        await _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));      
     }
 
     [Test]
-    public void Vote_IsUpvote_False()
+    public async Task Vote_IsUpvote_False()
     {
         bool expected = false;
         var user = new User { Id = "12345", DisplayName = "elJamster" };
@@ -71,14 +71,14 @@ public class SuggestionServiceTests
         suggestion.Votes.Add(votingUserId);
         user.VotedSuggestions.Add(new BasicSuggestion(suggestion));
 
-        bool actual = _suggestion.Vote(suggestion, user, votingUserId);
+        bool actual = await _suggestion.Vote(suggestion, user, votingUserId);
 
         Assert.That(actual, Is.EqualTo(expected));
-        _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));           
+        await _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));           
     }
 
     [Test]
-    public void Vote_BasicSuggestion_Added()
+    public async Task Vote_BasicSuggestion_Added()
     {
         bool expected = true;
         var user = new User { Id = "12345", DisplayName = "elJamster" };
@@ -92,15 +92,15 @@ public class SuggestionServiceTests
 
         string votingUserId = "B123456";  
         
-        _ = _suggestion.Vote(suggestion, user, votingUserId);  
+        _ = await _suggestion.Vote(suggestion, user, votingUserId);  
         bool actual = user.VotedSuggestions.Any(vs => vs.Id == suggestion.Id);
 
         Assert.That(actual, Is.EqualTo(expected));
-        _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));
+        await _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));
     }
 
     [Test]
-    public void Vote_BasicSuggestion_Removed()
+    public async Task Vote_BasicSuggestion_Removed()
     {
         bool expected = false;
         var user = new User { Id = "12345", DisplayName = "elJamster" };
@@ -116,10 +116,10 @@ public class SuggestionServiceTests
         suggestion.Votes.Add(votingUserId);
         user.VotedSuggestions.Add(new BasicSuggestion(suggestion));        
         
-        _ = _suggestion.Vote(suggestion, user, votingUserId);   
+        _ = await _suggestion.Vote(suggestion, user, votingUserId);   
         bool actual = user.VotedSuggestions.Any(vs => vs.Id == suggestion.Id);
 
         Assert.That(actual, Is.EqualTo(expected));
-        _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));
+        await _mockSuggestRepo.Received().UpdateVote(Arg.Is(suggestion), Arg.Is(user));
     }    
 }

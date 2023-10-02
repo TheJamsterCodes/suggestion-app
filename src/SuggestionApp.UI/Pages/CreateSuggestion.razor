@@ -1,0 +1,58 @@
+﻿@page "/Create-Suggestion"
+
+@inject AuthenticationStateProvider authProvider
+@inject ICategoryService categorySvc
+@inject NavigationManager navManager
+@inject IStatusService statusSvc
+@inject ISuggestionService  suggestionSvc
+@inject IUserService userSvc
+
+<PageTitle>Create Suggestion</PageTitle>
+
+<h1>Make a Suggestion</h1>
+
+<div>
+    <div>
+        <div>
+            <button @onclick="OnCloseCreateSuggestion">
+                <span class="oi oi-circle-x"></span>
+            </button>
+        </div>
+        @if (_categories is not null)
+        {
+            <EditForm Model="_suggestionInput" OnValidSubmit="Submit">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div>
+                    <label for="title">Name</label>
+                    <InputText 
+                        @bind-Value="_suggestionInput.Title" 
+                        id="title" 
+                        placeholder="Name your suggestion"
+                    />
+                </div>
+                <div>
+                    <label for="description">Describe your suggestion</label>
+                    <InputTextArea 
+                        @bind-Value="_suggestionInput.Description" 
+                        id="description" 
+                        placeholder="Describe your suggestion" 
+                    />
+                </div>
+                <div>
+                    <label for="category">Choose a category</label>
+                    <CustomRadioGroup @bind-Value="_suggestionInput.Category.Id" id="category">
+                        @foreach (Category category in _categories)
+                        {
+                            <InputRadio Value="@category.Id" id="@category.Id" />
+                            <label for="@category.Id">@category.Name - @category.Description</label>
+                        }
+                    </CustomRadioGroup>
+                </div>
+                <div>
+                    <button type="submit">Submit suggestion</button>
+                </div>
+            </EditForm>
+        }
+    </div>
+</div>

@@ -38,7 +38,7 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
     /// and updates the User documents AuthoredSuggestions field array.
     /// </summary>
     /// <param name="suggestion"></param>
-    public async void CreateWithAuthor(Suggestion suggestion, User user)
+    public async Task CreateWithAuthor(Suggestion suggestion, User user)
     {
         using IClientSessionHandle session = await _db.Client.StartSessionAsync();
 
@@ -107,7 +107,7 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
         throw new NotImplementedException();
     }
 
-    public async void UpdateVote(Suggestion suggestion, User user)
+    public async Task UpdateVote(Suggestion suggestion, User user)
     {        
         using IClientSessionHandle session = await _db.Client.StartSessionAsync();
 
