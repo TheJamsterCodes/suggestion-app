@@ -2,6 +2,6 @@ namespace SuggestionApp.Core.Interfaces;
 
 public interface ISuggestionRepository
 {
-    void CreateWithAuthor(Suggestion suggestion, User user);
-    void UpdateVote(Suggestion suggestion, User user);
+    Task CreateWithAuthor(Suggestion suggestion, User user);
+    Task UpdateVote(Suggestion suggestion, User user);
 }

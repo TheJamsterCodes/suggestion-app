@@ -20,11 +20,11 @@ public class SuggestionService : ISuggestionService
     /// </summary>
     /// <param name="suggestion"></param>
     /// <param name="user"></param>
-    public void AuthorSuggestion(Suggestion suggestion, User user)
+    public async Task AuthorSuggestion(Suggestion suggestion, User user)
     {
         var basicSuggestion = new BasicSuggestion(suggestion);
         user.AuthoredSuggestions.Add(basicSuggestion);
-        _suggestRepo.CreateWithAuthor(suggestion, user);
+        await _suggestRepo.CreateWithAuthor(suggestion, user);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class SuggestionService : ISuggestionService
     /// <param name="user"></param>
     /// <param name="votingUserId"></param>
     /// <returns>A <c>bool</c> based on upvote.</returns>
-    public bool Vote(Suggestion suggestion, User user, string votingUserId)
+    public async Task<bool> Vote(Suggestion suggestion, User user, string votingUserId)
     {
         bool isUpvote = suggestion.Votes.Add(votingUserId);
 
@@ -81,7 +81,7 @@ public class SuggestionService : ISuggestionService
             user.VotedSuggestions.Remove(removedSuggestion);            
         }
 
-        _suggestRepo.UpdateVote(suggestion, user);
+        await _suggestRepo.UpdateVote(suggestion, user);
 
         return isUpvote;
     }
