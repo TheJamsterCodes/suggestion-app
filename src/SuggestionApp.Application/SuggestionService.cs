@@ -38,6 +38,13 @@ public class SuggestionService : ISuggestionService
     }
 
     /// <summary>
+    /// Gets a <c>Suggestion</c> based on Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>A <c>Suggestion</c>.</returns>
+    public async Task<Suggestion> Get(string id) => await _baseRepo.Read(id);
+
+    /// <summary>
     /// Gets a list of <c>Suggestion</c> where <c>IsApprovedForRelease == false</c>
     /// and <c>IsRejected == false</c>.
     /// </summary>

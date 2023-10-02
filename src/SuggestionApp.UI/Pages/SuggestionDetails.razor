@@ -1,0 +1,56 @@
+﻿@page "/Details/{Id}"
+
+@inject ISuggestionService suggestionSvc
+@inject NavigationManager navManager
+
+<PageTitle>Suggestion Details</PageTitle>
+
+<h1>Suggestion Details</h1>
+
+<div>
+    <div>
+        @if (_suggestion is not null)
+        {
+            <div>
+                <div>
+                    <div>
+                        <div>@SetVoteText_Top()</div>
+                        <span class="oi oi-caret-top"></span>
+                        <div>@SetVoteText_Bottom()</div>  
+                    </div>
+                    <div>
+                        <div>@_suggestion.DateCreated.ToString("MM-dd-yy")</div>
+                    </div>
+                    <div>
+                        <div>@_suggestion.Title</div>
+                        <div>@_suggestion.Author.DisplayName</div>
+                        <div>@_suggestion.Description</div>
+                        <div>@_suggestion.Category.Name</div>
+                    </div>
+                    <div>
+                        <button @onclick="OnCloseDetails">
+                            <span class="oi oi-circle-x"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if (_suggestion?.Status is not null)
+{
+    <div>
+        <div>
+            <div></div>
+            <div>
+                <div>
+                    @_suggestion.Status.Name
+                </div>
+                <div>
+                    @((MarkupString)_suggestion.AdminNotes)
+                </div>
+            </div>
+        </div>
+    </div>
+}
