@@ -1,7 +1,92 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@inject ICategoryService category
+@inject IStatusService status
+@inject ISuggestionService suggestion
+@inject IUserService user
+@inject NavigationManager navManager
+@inject ProtectedSessionStorage sessionStorage
 
-<h1>Hello, world!</h1>
+<PageTitle>Suggestions</PageTitle>
 
-Welcome to your new app.
+<h1>Content Suggestions</h1>
+<div>
+    <button>Suggest</button>
+</div>
+
+<div>
+    <div>@_suggestions?.Any() Suggestions</div>
+    <div>
+        <button @onclick="(() => OnSortByNew(true))">New</button>
+        <button @onclick="(() => OnSortByNew(false))">Popular</button>
+    </div>
+    <div>
+        <input 
+            aria-label="Search input field"
+            @oninput="((txt) => OnSearchInput((string)txt.Value))"
+            type="text"
+        />
+    </div>
+</div>
+
+<div>
+    <div>
+        @if (_suggestions is not null)
+        {
+            <Virtualize Context="suggestion" Items="@_suggestions.ToList()" OverscanCount="10">
+                <div>
+                    <div>
+                        <div>@SetVoteText_Top(suggestion)</div>
+                        <span class="oi oi-caret-top"></span>
+                        <div>@SetVoteText_Bottom(suggestion)</div>
+                    </div>
+                    <div>
+                        <div @onclick="(() => OpenSuggestionDetails(suggestion))">
+                            @suggestion.Title
+                        </div>
+                        <div>
+                            <div @onclick="(() => OpenSuggestionDetails(suggestion))">
+                                @suggestion.Category?.Name
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            @suggestion.Status?.Name
+                        </div>
+                    </div>
+                </div>
+            </Virtualize>
+        }
+    </div>
+
+    <div>
+        @if (_categories is not null)
+        {
+            <div>
+                <span>Category</span>
+                <div @onclick="(() => OnCategoryClick())">All</div>
+                @foreach (Category category in _categories)
+                {
+                    <div @onclick="() => OnCategoryClick(category.Name)">
+                        @category.Name
+                    </div>
+                }
+            </div>
+        }
+
+        @if (_statuses is not null)
+        {
+            <div>
+                <span>Status</span>
+                <div @onclick="(() => OnStatusClick())">All</div>
+                @foreach (Status status in _statuses)
+                {
+                    <div @onclick="() => OnStatusClick(status.Name)">
+                        @status.Name
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
