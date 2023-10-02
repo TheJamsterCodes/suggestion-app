@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SuggestionApp.Core.Entities;
 
 /// <summary>
@@ -12,6 +14,8 @@ public class Suggestion : BaseEntity
     public Author Author { get; set; }
     
     [BsonElement("category")]
+    [Required]
+    [Display(Name = "Category")]
     public Category Category { get; set; }
     
     [BsonElement("dateCreated")]
@@ -21,6 +25,8 @@ public class Suggestion : BaseEntity
     public DateTime DateUpdated { get; set; }
     
     [BsonElement("description")]
+    [Required]
+    [MaxLength(500)]
     public string Description { get; set; }
     
     [BsonElement("isApprovedForRelease")]
@@ -36,6 +42,8 @@ public class Suggestion : BaseEntity
     public Status Status { get; set; }
     
     [BsonElement("title")]
+    [Required]
+    [MaxLength(75)]
     public string Title { get; set; }
 
     [BsonElement("votes")]
