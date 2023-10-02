@@ -28,6 +28,13 @@ public class SuggestionService : ISuggestionService
     }
 
     /// <summary>
+    /// Gets a <c>Suggestion</c> based on Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>A <c>Suggestion</c>.</returns>
+    public async Task<Suggestion> Get(string id) => await _baseRepo.Read(id);    
+
+    /// <summary>
     /// Gets a list of <c>Suggestion</c> where <c>IsApprovedForRelease == true</c>.
     /// </summary>
     /// <returns>An enumerable list of <c>Suggestion</c>.</returns>
@@ -38,11 +45,15 @@ public class SuggestionService : ISuggestionService
     }
 
     /// <summary>
-    /// Gets a <c>Suggestion</c> based on Id.
+    /// Get a list of <c>Suggestion</c> for a specific User
+    /// regardless of status.
     /// </summary>
-    /// <param name="id"></param>
-    /// <returns>A <c>Suggestion</c>.</returns>
-    public async Task<Suggestion> Get(string id) => await _baseRepo.Read(id);
+    /// <returns>A list of <c>Suggestion</c>.</returns>
+    public async Task<IEnumerable<Suggestion>> GetByUserId(string id)
+    {
+        var suggestions = await _baseRepo.ReadMany();
+        return suggestions.Where(s => s.Author.Id == id).OrderByDescending(s => s.DateCreated);
+    }
 
     /// <summary>
     /// Gets a list of <c>Suggestion</c> where <c>IsApprovedForRelease == false</c>
@@ -54,7 +65,6 @@ public class SuggestionService : ISuggestionService
         var suggestions = await _baseRepo.ReadMany();
         return suggestions.Where(s => !s.IsApprovedForRelease && !s.IsRejected).OrderBy(s => s.DateCreated);
     }    
-
 
     /// <summary>
     /// Add/remove the voter's <c>User.Id</c> from <c>Suggestion.Votes</c>,

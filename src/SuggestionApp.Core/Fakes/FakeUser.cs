@@ -6,7 +6,11 @@ public class FakeUser
     {
         new()
         {
-               
+            DisplayName = "sampleJamster",
+            Email = "jamster@email.com",
+            FirstName = "Sample First",
+            LastName = "Sample Last",
+            ObjectIdentifier = "ala963"
         }
     };
 }
