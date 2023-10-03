@@ -1,0 +1,77 @@
+﻿@page "/Profile"
+
+@inject AuthenticationStateProvider authProvider
+@inject NavigationManager navManager
+@inject ProtectedSessionStorage sessionStorage
+@inject ISuggestionService suggestionSvc
+@inject IStatusService statusSvc
+@inject IUserService userSvc
+
+<PageTitle>Profile</PageTitle>
+
+<h1>Profile</h1>
+
+<div>
+    <div>
+        <button @onclick="OnCloseProfile">
+            <span class="oi oi-circle-x"></span>
+        </button>
+    </div>
+</div>
+
+<div>
+    <h2>My Account</h2>
+    <div>
+        <button>Edit profile</button>
+    </div>
+</div>
+
+<div>
+    <div>@_suggestions?.Any() Suggestions</div>
+    <div>
+        <button @onclick="(() => OnSortByNew(true))">New</button>
+        <button @onclick="(() => OnSortByNew(false))">Popular</button>
+    </div>
+    <div>
+        @if (_statuses is not null)
+        {
+            <div>
+                <span>Status</span>
+                <div @onclick="(() => OnStatusClick())">All</div>
+                @foreach (Status status in _statuses)
+                {
+                    <div @onclick="() => OnStatusClick(status.Name)">
+                        @status.Name
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @if (_suggestions is not null)
+    {        
+        <Virtualize Context="suggestion" Items="@_suggestions.ToList()" OverscanCount="5">
+            <div>
+                <h3>@_selectedStatus Suggestions</h3>
+                @foreach (Suggestion suggestion in _suggestions)
+                {
+                    <hr />
+                    <ui>
+                        <li>@suggestion.Title</li>
+                        <li>@suggestion.DateCreated.ToString("MM-dd-yy")</li>
+                        <li>Total votes: @suggestion.Votes.Count.ToString("00")</li>
+                        <li>@suggestion.Category.Name</li>
+                        <li>@suggestion.Description</li>
+                        @if (suggestion.Status is not null)
+                        {
+                            <li>@suggestion.Status.Name</li>
+                            <li>@((MarkupString)suggestion.AdminNotes)</li>
+                        }
+                    </ui>        
+                }
+            </div>
+        </Virtualize>
+    }
+</div>
