@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
-
 namespace SuggestionApp.UI.Pages;
 
 public partial class Index

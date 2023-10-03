@@ -33,7 +33,7 @@
     <div>
         @if (_suggestions is not null)
         {
-            <Virtualize Context="suggestion" Items="@_suggestions.ToList()" OverscanCount="10">
+            <Virtualize Context="suggestion" Items="@_suggestions.ToList()" OverscanCount="5">
                 <div>
                     <div>
                         <div>@SetVoteText_Top(suggestion)</div>
