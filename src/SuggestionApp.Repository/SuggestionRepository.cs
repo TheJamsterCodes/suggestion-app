@@ -86,7 +86,7 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
 
         if (output is null)
         {
-            output = (IEnumerable<Suggestion>)await _suggestions.FindAsync(s => !s.IsArchived);
+            output = (IEnumerable<Suggestion>)await _suggestions.FindAsync(_ => true);
             _cache.Set(_cacheName, output, TimeSpan.FromMinutes(1));
         }
 
