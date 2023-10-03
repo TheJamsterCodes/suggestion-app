@@ -41,9 +41,10 @@ public class SuggestionService : ISuggestionService
     public async Task<IEnumerable<Suggestion>> GetApprovedForRelease()
     {
         var suggestions = await _baseRepo.ReadMany();
-        return suggestions.Where(s => s.IsApprovedForRelease).OrderByDescending(s => s.DateCreated);
+        return suggestions.Where(s => s.IsApprovedForRelease && !s.IsArchived).OrderByDescending(s => s.DateCreated);
     }
 
+    // TODO: NOTE: Maybe index by Author.Id in MongoDB
     /// <summary>
     /// Get a list of <c>Suggestion</c> for a specific User
     /// regardless of status.
@@ -63,7 +64,7 @@ public class SuggestionService : ISuggestionService
     public async Task<IEnumerable<Suggestion>> GetWaitingForApproval()
     {
         var suggestions = await _baseRepo.ReadMany();
-        return suggestions.Where(s => !s.IsApprovedForRelease && !s.IsRejected).OrderBy(s => s.DateCreated);
+        return suggestions.Where(s => !s.IsApprovedForRelease && !s.IsRejected && !s.IsArchived).OrderBy(s => s.DateCreated);
     }    
 
     /// <summary>
