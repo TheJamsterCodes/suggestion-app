@@ -27,6 +27,9 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
 
         var result = await _suggestions.UpdateOneAsync(filter, update);
 
+        // TODO: Think about removing cache
+        // if (result.IsAcknowledged) _cache.Remove(_cacheName);
+
         return result.IsAcknowledged;
     }
 
