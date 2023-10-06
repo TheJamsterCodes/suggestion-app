@@ -13,7 +13,7 @@ public class SuggestionService : ISuggestionService
         _baseRepo = baseRepo;
         _suggestRepo = suggestRepo;
     }
-
+    
     /// <summary>
     /// Adds a <c>BasicSuggestion</c> to the <c>User.AuthoredSuggestions</c> list
     /// and persists both entities to the database.
@@ -65,7 +65,7 @@ public class SuggestionService : ISuggestionService
     {
         var suggestions = await _baseRepo.ReadMany();
         return suggestions.Where(s => !s.IsApprovedForRelease && !s.IsRejected && !s.IsArchived).OrderBy(s => s.DateCreated);
-    }    
+    }
 
     /// <summary>
     /// Add/remove the voter's <c>User.Id</c> from <c>Suggestion.Votes</c>,
