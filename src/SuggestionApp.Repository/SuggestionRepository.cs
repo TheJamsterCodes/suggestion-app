@@ -1,4 +1,3 @@
-
 using Microsoft.Extensions.Caching.Memory;
 
 namespace SuggestionApp.Repository;
@@ -16,6 +15,19 @@ public class SuggestionRepository : ISuggestionRepository, IBaseRepository<Sugge
         _cache = cache;
         _db = db;
         _suggestions = _db.Suggestions;
+    }
+
+    public async Task<bool> AdminUpdate(Suggestion suggestion, string property)
+    {        
+        object value = suggestion.GetType().GetProperty(property).GetValue(suggestion, null);
+        string field = property[..1].ToLowerInvariant() + property[1..];
+
+        var filter = Builders<Suggestion>.Filter.Eq("_id", suggestion.Id);
+        var update = Builders<Suggestion>.Update.Set(field, value);
+
+        var result = await _suggestions.UpdateOneAsync(filter, update);
+
+        return result.IsAcknowledged;
     }
 
     /// <summary>
